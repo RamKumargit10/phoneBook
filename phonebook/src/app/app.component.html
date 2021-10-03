@@ -1,0 +1,39 @@
+<div class="phonebook">
+  <div class="sort">
+    <button (click)="sort()">Ascending</button>
+    <button (click)="sort2()">Descending</button>
+  </div>
+  <div class="body">
+    <div class="search-bar"> <input type="search" id="query" name="q" placeholder="Search..." [(ngModel)]="search">
+      <button><svg viewBox="0 0 1024 1024">
+          <path class="path1"
+            d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div class="contact-div">
+      <div class="add">
+        <button (click)="addContact()">Add Contact</button>
+        <div *ngIf="add">
+          <div class="info">
+            <input type="text" [(ngModel)]="name" placeholder="User Name...">
+            <input type="number" [(ngModel)]="number" placeholder="Phone NUmber..">
+          </div>
+          <button (click)="save()">Save</button>
+        </div>
+      </div>
+      <div class="card" *ngFor="let item of contactDetails |filter:search;let i=index">
+        <div class="info">
+          <div class="name"> {{item.name}}</div>
+          <div class="number"> {{item.number}}</div>
+        </div>
+        <div class="delete">
+          <button (click)="delete(i)">
+            delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
